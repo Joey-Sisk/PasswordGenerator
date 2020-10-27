@@ -3,8 +3,7 @@ var generateBtn = document.querySelector("#generate");
 
 // Write password to the #password input
 
-// this should contain the final password string
-let password = "";
+
 
 // this object holds every possible character that the user can include in their password
 const characters = {
@@ -15,7 +14,7 @@ const characters = {
 };
 
 // this array will gather the chosen character string to be called on when the password is assembled
-let charChoices = [];
+let charChoices = "";
 
 // this allows for calling the different parts of the characters object
 const lower = characters.lowerStr;
@@ -34,6 +33,7 @@ function writePassword() {
   passwordText.value = password;
 
 }
+
 
 // this function does all the work asking the user what to include and eventually assembling the password
 function generatePassword() {
@@ -55,32 +55,35 @@ function generatePassword() {
   // this checks that the user has selected at least 1 type of character and adds the characters to the charTypes array
   if (lowerStrTrue === true) {
     charTypes = charTypes ++;
-    charChoices.push(lower);
+    charChoices.concat(lower);
   }
   if (upperStrTrue === true) {
     charTypes = charTypes ++;
-    charChoices.push(upper);
+    charChoices.concat(upper);
   }
   if (integerStrTrue === true) {
     charTypes = charTypes ++;
-    charChoices.push(integer);
+    charChoices.concat(integer);
   }
   if (symbolsStrTrue === true) {
     charTypes = charTypes ++;
-    charChoices.push(symbol);
+    charChoices.concat(symbol);
   }
   if (lowerStrTrue === false && upperStrTrue === false && integerStrTrue === false && symbolsStrTrue === false) {
     alert("Please choose at least 1 character type for your password.");
     return;
   }
 
-  // this assembles the password from random characters in the charChoices array
+  // this assembles the password from random characters in the charChoicesStr string
   for (var i = 0; i < passLengthInt; i++) {
     let charPick = Math.floor(Math.random() * charTypes);
-    let passChar = charChoices[charPick];
-    password.push(passChar);
+    let passChar = charChoices.charAt(Math.floor(Math.random() * charChoices.length));
+    password.concat(passChar);
+
+    return password
   }
 }
+
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
