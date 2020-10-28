@@ -7,10 +7,8 @@ const upper = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 const integer = "1234567890";
 const symbol = "!@#$%^&*-_=+;:,.?`~";
 
-// the generatePassword function will access and alter these variables
-let combinedCharacterChoices = ""; // this is where the character types are added to be accessed when creating the password
-let passwordTempHolder = ""; // the password is temporarily held in this while the last for loop runs
-let passwordLength; // the length of the password chosen by the user. Limits the last for loop in order to set length of the string
+// the length of the password chosen by the user. Limits the last for loop in order to set length of the string
+let passwordLength; 
 
 // these are only used to add character types and verify at least 1 type is selected
 let lowerCharactersAdd;
@@ -28,6 +26,12 @@ function writePassword() {
 
 // this function does all the work asking the user what to include and eventually assembling the password
 function generatePassword() {
+
+  // this is where the character types are added to be accessed when creating the password
+  let combinedCharacterChoices = ""; 
+  
+  // the password is temporarily held in this while the last for loop runs
+  let passwordTempHolder = ""; 
 
   // this asks the user how long to make the password and ensures it meets the criteria, it also converts the input to numericals and rounds down to the nearest whole number
   passwordLength = Math.floor(parseInt(prompt("Please choose a password length between 8 and 128.")));
