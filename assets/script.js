@@ -55,12 +55,14 @@ function generatePassword() {
     alert("Please choose at least 1 character type for your password.");
     return;
   }
-
+var i;
   // this assembles the password from random characters in the combinedCharacterChoicesStr string
-  for (var i = 0; i < passwordLength; i++) {
+  for (i = 0; i < passwordLength; i++) {
     passwordTempHolder += combinedCharacterChoices.charAt(Math.floor(Math.random() * combinedCharacterChoices.length)); 
+    console.log("value of i = " + i)
   }
 
+console.log("value of i = " + i)
 return password = passwordTempHolder; // sends finished password to the writePassword function
 }
 
